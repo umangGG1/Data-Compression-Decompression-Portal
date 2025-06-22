@@ -1,0 +1,17 @@
+{
+  "short_name": "Compression Portal",
+  "name": "Data Compression & Decompression Portal",
+  "description": "A web application for compressing and decompressing files using various algorithms",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3B82F6",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary"
+} 

@@ -1,0 +1,31 @@
+{
+  "name": "compression-portal",
+  "version": "1.0.0",
+  "description": "Data Compression & Decompression Portal with multiple algorithms",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "heroku-postbuild": "npm run install-deps && npm run build"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "keywords": [
+    "compression",
+    "huffman",
+    "rle",
+    "lz77",
+    "data-compression"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
