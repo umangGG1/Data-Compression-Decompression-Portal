@@ -20,7 +20,7 @@ app.use(compression());
 // CORS configuration for Vercel frontend
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://compression-portal.vercel.app',
+    'https://data-compression-decompression-port.vercel.app/',
     'https://compression-portal-frontend.vercel.app'
 ];
 
