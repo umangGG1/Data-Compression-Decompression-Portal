@@ -331,17 +331,25 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Serve static files from the React app build directory in production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')));
-    
-    // Catch all handler: send back React's index.html file for any non-API routes
-    app.get('*', (req, res) => {
-        if (!req.path.startsWith('/api/')) {
-            res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-        }
+// Root endpoint for API confirmation
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'Compression Portal API Server',
+        status: 'Running',
+        version: '1.0.0',
+        endpoints: [
+            'GET /api/health',
+            'GET /api/algorithms',
+            'POST /api/upload',
+            'POST /api/compress',
+            'POST /api/decompress',
+            'GET /api/download/:filename'
+        ]
     });
-}
+});
+
+// API-only backend - frontend is served separately on Vercel
+// No static file serving needed for split deployment
 
 // Error handling middleware
 app.use((error, req, res, next) => {

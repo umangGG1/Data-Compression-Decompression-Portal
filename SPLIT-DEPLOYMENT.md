@@ -161,6 +161,12 @@ vercel --prod
 ### **API Not Found:**
 - Verify the API_URL in frontend config
 - Check if backend is running on Render
+- Visit your backend URL directly - should show API info
+
+### **Backend Deployment Errors:**
+- If you see "ENOENT: no such file or directory" errors about frontend/build
+- This means the backend is trying to serve frontend files
+- Make sure you're deploying only the backend folder on Render
 
 ### **Build Failures:**
 - Check build logs in respective dashboards
