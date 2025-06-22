@@ -25,18 +25,10 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: function (origin, callback) {
-        // Allow requests with no origin (mobile apps, Postman, etc.)
-        if (!origin) return callback(null, true);
-        
-        // Check if origin is in allowed list or is a Vercel deployment
-        if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
-            return callback(null, true);
-        }
-        
-        callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
