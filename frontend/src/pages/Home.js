@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
+import config from '../config';
 import { 
   Upload, 
   FileText, 
@@ -51,7 +52,7 @@ const Home = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('/api/upload', formData, {
+      const response = await axios.post(`${config.API_URL}/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -76,7 +77,7 @@ const Home = () => {
 
     setIsProcessing(true);
     try {
-      const response = await axios.post('/api/compress', {
+      const response = await axios.post(`${config.API_URL}/api/compress`, {
         fileId: uploadedFile.id,
         algorithm: selectedAlgorithm,
         originalName: uploadedFile.originalName,
@@ -105,7 +106,7 @@ const Home = () => {
 
     setIsProcessing(true);
     try {
-      const response = await axios.post('/api/decompress', {
+      const response = await axios.post(`${config.API_URL}/api/decompress`, {
         fileId: compressionResult.compressedFile,
         algorithm: selectedAlgorithm,
         originalName: uploadedFile?.originalName,
@@ -128,7 +129,7 @@ const Home = () => {
 
   const handleDownload = async (filename, type = 'compressed') => {
     try {
-      const response = await axios.get(`/api/download/${filename}`, {
+      const response = await axios.get(`${config.API_URL}/api/download/${filename}`, {
         responseType: 'blob',
       });
 
